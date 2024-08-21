@@ -1,12 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   bool isDarkMode = false;
+
   String gender = 'Male'; 
 
   @override
@@ -17,7 +20,8 @@ class _HomePageState extends State<HomePage> {
           "Home",
         ),
       ),
-      // Pestaña lateral
+
+      /// pestaña
       drawer: Drawer(
         child: Column(
           children: [
@@ -57,65 +61,167 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.normal,
                       ),
                     ),
-                  ],
+                   ],
+
                 ),
+
+                              
+              ),
+
+              
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.person
+              ),
+              title:Text(
+                "My profile"
               ),
             ),
+
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text("My profile"),
+              leading: Icon(
+                Icons.file_copy
+              ),
+              title:Text(
+                "Portafolio"
+              ),
             ),
+
             ListTile(
-              leading: Icon(Icons.file_copy),
-              title: Text("Portafolio"),
+              leading: Icon(
+                Icons.lock
+              ),
+              title:Text(
+                "Change Password"
+              ),
             ),
-            ListTile(
-              leading: Icon(Icons.lock),
-              title: Text("Change Password"),
-            ),
-            Divider(indent: 12, endIndent: 12),
+
+            Divider(indent: 12, endIndent: 12,),
+
             ListTile(
               leading: Icon(
                 Icons.exit_to_app,
-                color: Colors.orange,
+                color:Colors.orange
               ),
-              title: Text("Logout"),
-            ),
+              title:Text(
+                "Logout",
+                
+                
+              ),
+              
+            )
           ],
+        ),
+
+        
+      ),
+
+/////
+        body: Padding(
+  padding: const EdgeInsets.all(16.0),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Configuración general",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 18.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      SizedBox(height: 16.0),
+      Text(
+        "Elvis",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 14.0,
+          fontWeight: FontWeight.normal,
         ),
       ),
 
-      // Cuerpo de la página
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Configuración general",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
+      Divider(indent: 0, endIndent: 0,),
+
+      SizedBox(height: 16.0),
+
+      Text(
+        "Lopez",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 14.0,
+          fontWeight: FontWeight.normal,
+        ),
+      ),
+      Divider(indent: 0, endIndent: 0,),
+
+      SizedBox(height: 16.0),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "Dark Mode",
+            style: TextStyle(color: Colors.black,
+            fontSize: 14.0,
+            fontWeight: FontWeight.bold,),
+            
+          ),
+          Switch(
+            value: false, 
+            onChanged: (value) {
+              
+            },
+          ),
+        ],
+      ),
+      SizedBox(height: 16.0),
+      Text(
+        "Gender",
+        style: TextStyle(color: Colors.black),
+      ),
+      Row(
+              children: [
+                Radio<String>(
+                  value: 'Male',
+                  groupValue: gender,
+                  onChanged: (value) {
+                    setState(() {
+                      gender = value!;
+                    });
+                  },
+                ),
+                Text("Male"),
+                Radio<String>(
+                  value: 'Female',
+                  groupValue: gender,
+                  onChanged: (value) {
+                    setState(() {
+                      gender = value!;
+                    });
+                  },
+                ),
+                Text("Female"),
+              ],
             ),
-            SizedBox(height: 16.0),
-            Text(
-              "Elvis",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14.0,
-                fontWeight: FontWeight.normal,
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para guardar los datos
+               
+              },
+              child: Text("Save data",
               ),
+              
             ),
-            Divider(indent: 0, endIndent: 0),
-            Text(
-              "Lopez",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14.0,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            Divider(indent: 0, endIndent: 0),
-            SizedBox(height: 16
+
+    ],
+  ),
+),
+
+
+
+
+    );
+  }
+}
